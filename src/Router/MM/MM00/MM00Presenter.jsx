@@ -34,7 +34,12 @@ const HoverWrapper = styled(Wrapper)`
  }
 `;
 
-const MM00Presenter = ({ boardBannerDatum, moveLinkHandler, logout }) => {
+const MM00Presenter = ({
+ boardBannerDatum,
+ moveLinkHandler,
+ logout,
+ writeMoveLinkHandler,
+}) => {
  return (
   <Wrapper padding={`0`}>
    <Wrapper
@@ -61,13 +66,13 @@ const MM00Presenter = ({ boardBannerDatum, moveLinkHandler, logout }) => {
        <SpanText width={`50%`} padding={`10px`}>
         내용
        </SpanText>
-       <SpanText width={`10%`} padding={`10px`}>
+       <SpanText width={`8%`} padding={`10px`}>
         작성자
        </SpanText>
-       <SpanText width={`10%`} padding={`10px`}>
+       <SpanText width={`8%`} padding={`10px`}>
         조회수
        </SpanText>
-       <SpanText width={`10%`} padding={`10px`}>
+       <SpanText width={`14%`} padding={`10px`}>
         생성날자
        </SpanText>
       </Wrapper>
@@ -89,14 +94,14 @@ const MM00Presenter = ({ boardBannerDatum, moveLinkHandler, logout }) => {
            <SpanText width={`50%`} padding={`10px`}>
             {data.desc}
            </SpanText>
-           <SpanText width={`10%`} padding={`10px`}>
-            {data.author.name}
+           <SpanText width={`8%`} padding={`10px`}>
+            {data.author.nickName}
            </SpanText>
-           <SpanText width={`10%`} padding={`10px`}>
+           <SpanText width={`8%`} padding={`10px`}>
             {data.hit}
            </SpanText>
-           <SpanText width={`10%`} padding={`10px`}>
-            {data.createdAt}
+           <SpanText width={`14%`} padding={`10px`}>
+            {data.createdAt.substring(0, 10)}
            </SpanText>
           </HoverWrapper>
          );
@@ -106,7 +111,7 @@ const MM00Presenter = ({ boardBannerDatum, moveLinkHandler, logout }) => {
        "데이터를 불러오지 못했습니다."
       )}
       <Wrapper dr={`row`} ju={`flex-end`} margin={`10px 0`}>
-       <CheckBtn onClick={() => moveLinkHandler(`write`)}>게시글생성</CheckBtn>
+       <CheckBtn onClick={() => writeMoveLinkHandler()}>게시글생성</CheckBtn>
       </Wrapper>
      </Wrapper>
 

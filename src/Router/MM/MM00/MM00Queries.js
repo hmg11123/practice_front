@@ -8,7 +8,7 @@ export const GET_ALL_BOARD = gql`
    desc
    createdAt
    author {
-    name
+    nickName
    }
    hit
   }

@@ -294,6 +294,6 @@ export const DeleteBtn = styled(CommonButton)`
 
 export const DescArea = styled.textarea`
  width: ${(props) => props.width || `1000px`};
- height: ${(props) => props.height || `700px`};
+ height: ${(props) => props.height || `500px`};
  resize: none;
 `;

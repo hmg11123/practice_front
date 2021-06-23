@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MM00Presenter from "./MM00Presenter";
 import { useQuery } from "react-apollo-hooks";
 import { GET_ALL_BOARD } from "./MM00Queries";
@@ -11,26 +11,37 @@ const MM00Container = ({ history }) => {
   refetch: boardBannerRefetch,
  } = useQuery(GET_ALL_BOARD);
 
- console.log(boardBannerDatum && boardBannerDatum.getAllBoard);
-
  const moveLinkHandler = (link) => {
   history.push(`/${link}`);
+ };
+
+ const writeMoveLinkHandler = () => {
+  if (sessionStorage.getItem(`loginData`)) {
+   history.push(`/write`);
+  } else {
+   toast.error("로그인 후 이용해주세요.");
+   history.push(`/signIn`);
+  }
  };
 
  const logout = () => {
   window.sessionStorage.removeItem(`loginData`);
   if (!sessionStorage.getItem(`loginData`)) {
-   alert(`로그아웃 되었습니다.`);
-   location.reload();
+   toast.info(`로그아웃 되었습니다.`);
+   history.push(`/`);
   }
  };
 
- console.log(boardBannerDatum && boardBannerDatum.getAllBoard);
+ useEffect(() => {
+  boardBannerRefetch();
+ }, []);
+
  return (
   <MM00Presenter
    boardBannerDatum={boardBannerDatum && boardBannerDatum.getAllBoard}
    moveLinkHandler={moveLinkHandler}
    logout={logout}
+   writeMoveLinkHandler={writeMoveLinkHandler}
   />
  );
 };
