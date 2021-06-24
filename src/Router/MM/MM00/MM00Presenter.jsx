@@ -86,6 +86,7 @@ const MM00Presenter = ({
            key={idx}
            dr={`row`}
            borderBottom={`1px solid ${Theme.basicTheme_C}`}
+           onClick={() => moveLinkHandler(`board_D/${data._id}`)}
           >
            <SpanText width={`7%`}>{idx + 1}</SpanText>
            <SpanText width={`13%`} padding={`10px`}>

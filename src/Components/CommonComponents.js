@@ -256,7 +256,7 @@ export const CommonInput = styled.input`
 export const StyledInput = styled(CommonInput)`
  outline: none;
  border: none;
- width: 400px;
+ width: ${(props) => props.width || `400px`};
  height: 50px;
  background-color: none;
  box-shadow: 1px 2px 0px ${Theme.lightGrey_C};
@@ -286,8 +286,8 @@ export const DeleteBtn = styled(CommonButton)`
  background-color: ${(props) => props.bgColor || Theme.delete_B_c};
  color: ${(props) => props.color || Theme.subTheme_C};
  &:hover {
-  border: 1px solid ${Theme.check_B_C};
-  background: ${Theme.delete_B_c};
+  border: 1px solid ${Theme.delete_B_c};
+  background: ${Theme.subTheme_C};
   color: ${Theme.check_B_C};
  }
 `;
