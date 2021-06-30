@@ -244,6 +244,7 @@ export const Li = styled.li`
  align-items: ${(props) => props.al || `center`};
  justify-content: ${(props) => props.ju || `center`};
  background: ${(props) => props.bgColor};
+ border: ${(props) => props.border};
 `;
 
 export const CommonInput = styled.input`

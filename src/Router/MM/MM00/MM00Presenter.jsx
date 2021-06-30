@@ -90,13 +90,13 @@ const MM00Presenter = ({
           >
            <SpanText width={`7%`}>{idx + 1}</SpanText>
            <SpanText width={`13%`} padding={`10px`}>
-            {data.title}
+            {data.title.substring(0, 6)}
            </SpanText>
            <SpanText width={`50%`} padding={`10px`}>
-            {data.desc}
+            {data.desc.substring(0, 50)}
            </SpanText>
            <SpanText width={`8%`} padding={`10px`}>
-            {data.author.nickName}
+            {data.author}
            </SpanText>
            <SpanText width={`8%`} padding={`10px`}>
             {data.hit}
@@ -134,7 +134,7 @@ const MM00Presenter = ({
          margin={`5px 0`}
          bgColor={Theme.subTheme_C}
          color={Theme.basicTheme_C}
-         onClick={() => moveLinkHandler(`signIn`)}
+         onClick={() => moveLinkHandler(`myPage`)}
         >
          마이페이지
         </HoverInput>

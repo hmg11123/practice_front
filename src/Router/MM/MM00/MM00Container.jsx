@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import MM00Presenter from "./MM00Presenter";
 import { useQuery } from "react-apollo-hooks";
-import { GET_ALL_BOARD } from "./MM00Queries";
+import { GET_ALL_BOARD, GET_USER } from "./MM00Queries";
 import { toast } from "react-toastify";
 
 const MM00Container = ({ history }) => {
@@ -10,6 +10,18 @@ const MM00Container = ({ history }) => {
   loading: boardBannerLoding,
   refetch: boardBannerRefetch,
  } = useQuery(GET_ALL_BOARD);
+
+ console.log(boardBannerDatum && boardBannerDatum.getAllBoard);
+ const {
+  data: userBannerDatum,
+  loading: userBannerLoding,
+  refetch: userBannerRefetch,
+ } = useQuery(GET_USER, {
+  skip: true,
+  variables: { id: boardBannerDatum && boardBannerDatum.getAllBoard.author },
+ });
+
+ console.log(userBannerDatum);
 
  const moveLinkHandler = (link) => {
   history.push(`/${link}`);

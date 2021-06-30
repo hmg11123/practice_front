@@ -7,20 +7,16 @@ export const GET_ALL_BOARD = gql`
    title
    desc
    createdAt
-   author {
-    nickName
-   }
+   author
    hit
   }
  }
 `;
 
-// export const LOGIN_USER_DATA = gql`
-//  query idUserData($id: String!) {
-//   idUserData(id: $id) {
-//    name
-//    email
-//    createdAt
-//   }
-//  }
-// `;
+export const GET_USER = gql`
+ query getUser($id: String!) {
+  getUser(id: $id) {
+   name
+  }
+ }
+`;

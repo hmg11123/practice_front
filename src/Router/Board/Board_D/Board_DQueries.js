@@ -5,10 +5,7 @@ export const GET_BOARD = gql`
   getBoard(id: $id) {
    title
    desc
-   author {
-    _id
-    nickName
-   }
+   author
    createdAt
    hit
   }

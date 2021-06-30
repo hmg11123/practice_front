@@ -39,7 +39,7 @@ const Board_DPresenter = ({
         <StyledInput
          margin={`0`}
          width={`130px`}
-         value={boardBannerDatum && boardBannerDatum.author.nickName}
+         value={boardBannerDatum && boardBannerDatum.author}
          readOnly
         />
        </Wrapper>

@@ -23,9 +23,16 @@ const Board_DContainer = ({ match, history }) => {
  const [deleteBoardMutation] = useMutation(DELETE_BOARD);
 
  const _isDialogOpenToggle = () => {
-  setIsDialogOpen(!isDialogOpen);
-  inputTitle.setValue(`${boardBannerDatum && boardBannerDatum.getBoard.title}`);
-  inputDesc.setValue(`${boardBannerDatum && boardBannerDatum.getBoard.desc}`);
+  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId) {
+   setIsDialogOpen(!isDialogOpen);
+   inputTitle.setValue(
+    `${boardBannerDatum && boardBannerDatum.getBoard.title}`,
+   );
+   inputDesc.setValue(`${boardBannerDatum && boardBannerDatum.getBoard.desc}`);
+  } else {
+   toast.error("작성자가 아닙니다.");
+   return;
+  }
  };
 
  const updateBoardHandler = () => {
@@ -56,7 +63,7 @@ const Board_DContainer = ({ match, history }) => {
  };
 
  const deleteBoardHandler = () => {
-  if (boardBannerDatum && boardBannerDatum.getBoard.author._id === userId) {
+  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId) {
    if (confirm("이 계시글을 지울꺼임?")) {
     const data = deleteBoardMutation({
      variables: {
@@ -92,6 +99,8 @@ const Board_DContainer = ({ match, history }) => {
    inputTitle={inputTitle}
    inputDesc={inputDesc}
    deleteBoardHandler={deleteBoardHandler}
+   isDialogOpen={isDialogOpen}
+   _isDialogOpenToggle={_isDialogOpenToggle}
   />
  );
 };
