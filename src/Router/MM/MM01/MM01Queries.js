@@ -6,7 +6,7 @@ export const LOGIN_USER = gql`
    isLogin
    userData {
     _id
-    name
+    nickName
     email
    }
   }

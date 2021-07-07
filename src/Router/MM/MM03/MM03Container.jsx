@@ -9,7 +9,7 @@ const MM03Container = ({ history }) => {
  const inputName = useInput("");
  const inputNickName = useInput("");
  const inputAffiliatedCompany = useInput("");
- const userId = sessionStorage.getItem(`loginData`);
+ const userId = JSON.parse(sessionStorage.getItem(`loginData`));
  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
  const {
@@ -18,7 +18,7 @@ const MM03Container = ({ history }) => {
   refetch: userBannerRefetch,
  } = useQuery(GET_USER, {
   variables: {
-   id: userId,
+   id: userId._id,
   },
  });
 
@@ -26,7 +26,7 @@ const MM03Container = ({ history }) => {
  const [deleteUserMutation] = useMutation(DELETE_USER);
 
  const _isDialogOpenToggle = () => {
-  if (userBannerDatum && userBannerDatum.getUser._id === userId) {
+  if (userBannerDatum && userBannerDatum.getUser._id === userId._id) {
    setIsDialogOpen(!isDialogOpen);
   } else {
    toast.error("작성자가 아닙니다.");
@@ -37,7 +37,7 @@ const MM03Container = ({ history }) => {
  const updateUserHandler = async () => {
   const { data } = await updateUserMutation({
    variables: {
-    id: userId,
+    id: userId._id,
     name: inputName.value,
     nickName: inputNickName.value,
     affiliatedCompany: inputAffiliatedCompany.value,
@@ -57,7 +57,7 @@ const MM03Container = ({ history }) => {
   if (confirm("정말로 탈퇴하실 겁니까?")) {
    const { data } = await deleteUserMutation({
     variables: {
-     id: userId,
+     id: userId._id,
     },
    });
    if (data) {

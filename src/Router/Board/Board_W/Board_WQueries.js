@@ -11,7 +11,17 @@ export const GET_USER = gql`
 `;
 
 export const CREATE_BOARD = gql`
- mutation createBoard($title: String!, $desc: String!, $author: String!) {
-  createBoard(title: $title, desc: $desc, author: $author)
+ mutation createBoard(
+  $title: String!
+  $desc: String!
+  $author: String!
+  $detailAuthor: String!
+ ) {
+  createBoard(
+   title: $title
+   desc: $desc
+   author: $author
+   detailAuthor: $detailAuthor
+  )
  }
 `;

@@ -23,7 +23,10 @@ const MM01Container = ({ history }) => {
   setTryLogin(false);
   if (loginBannerDatum && loginBannerDatum.loginUser.isLogin) {
    const userId = loginBannerDatum && loginBannerDatum.loginUser.userData._id;
-   window.sessionStorage.setItem(`loginData`, userId);
+   window.sessionStorage.setItem(
+    `loginData`,
+    JSON.stringify(loginBannerDatum.loginUser.userData),
+   );
    history.push("/");
    toast.info("성공적으로 로그인이 되었습니다.");
   } else {

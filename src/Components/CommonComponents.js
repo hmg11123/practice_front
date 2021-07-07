@@ -274,6 +274,7 @@ export const CheckBtn = styled(CommonButton)`
  height: ${(props) => props.height || `40px`};
  background-color: ${(props) => props.bgColor || Theme.check_B_C};
  color: ${(props) => props.color || Theme.subTheme_C};
+ margin: ${(props) => props.margin};
  &:hover {
   border: 1px solid ${Theme.check_B_C};
   background: ${Theme.subTheme_C};
@@ -286,6 +287,7 @@ export const DeleteBtn = styled(CommonButton)`
  height: ${(props) => props.height || `40px`};
  background-color: ${(props) => props.bgColor || Theme.delete_B_c};
  color: ${(props) => props.color || Theme.subTheme_C};
+ margin: ${(props) => props.margin};
  &:hover {
   border: 1px solid ${Theme.delete_B_c};
   background: ${Theme.subTheme_C};

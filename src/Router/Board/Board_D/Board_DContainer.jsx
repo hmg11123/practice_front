@@ -10,7 +10,7 @@ const Board_DContainer = ({ match, history }) => {
  const inputDesc = useInput("");
  const [isDialogOpen, setIsDialogOpen] = useState(false);
  const boardKey = match.params.key;
- const userId = sessionStorage.getItem("loginData");
+ const userId = JSON.parse(sessionStorage.getItem("loginData"));
  const {
   data: boardBannerDatum,
   loading: boardBannerLoading,
@@ -23,7 +23,7 @@ const Board_DContainer = ({ match, history }) => {
  const [deleteBoardMutation] = useMutation(DELETE_BOARD);
 
  const _isDialogOpenToggle = () => {
-  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId) {
+  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId._id) {
    setIsDialogOpen(!isDialogOpen);
    inputTitle.setValue(
     `${boardBannerDatum && boardBannerDatum.getBoard.title}`,
@@ -63,7 +63,7 @@ const Board_DContainer = ({ match, history }) => {
  };
 
  const deleteBoardHandler = () => {
-  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId) {
+  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId._id) {
    if (confirm("이 계시글을 지울꺼임?")) {
     const data = deleteBoardMutation({
      variables: {

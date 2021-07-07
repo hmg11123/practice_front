@@ -8,26 +8,19 @@ import { GET_USER, CREATE_BOARD } from "./Board_WQueries";
 const Board_WContainer = ({ history }) => {
  const newTitle = useInput(``);
  const newDesc = useInput(``);
- const userId = sessionStorage.getItem(`loginData`);
- const {
-  data: userBannerDatum,
-  loading: userBannerLoading,
-  refetch: userBannerRefetch,
- } = useQuery(GET_USER, {
-  variables: { id: userId },
- });
+ const userId = JSON.parse(sessionStorage.getItem(`loginData`));
 
  const [CreateBoardMutation] = useMutation(CREATE_BOARD);
 
+ console.log(userId.nickName);
+
  const createBoardHandler = async () => {
-  console.log(newTitle.value);
-  console.log(newDesc.value);
-  console.log(userId);
   const { data } = await CreateBoardMutation({
    variables: {
     title: newTitle.value,
     desc: newDesc.value,
-    author: userId,
+    author: userId.nickName,
+    detailAuthor: userId._id,
    },
   });
 
@@ -44,12 +37,10 @@ const Board_WContainer = ({ history }) => {
   }
  };
 
- const userData = userBannerDatum && userBannerDatum.getUser;
  return (
   <Board_WPresenter
    newTitle={newTitle}
    newDesc={newDesc}
-   userData={userData}
    createBoardHandler={createBoardHandler}
   />
  );

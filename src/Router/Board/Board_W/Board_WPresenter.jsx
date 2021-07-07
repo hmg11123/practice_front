@@ -17,12 +17,7 @@ const BoardName = styled(CommonButton)`
  background-color: ${Theme.lightGrey_C};
 `;
 
-const Board_WPresenter = ({
- userData,
- createBoardHandler,
- newTitle,
- newDesc,
-}) => {
+const Board_WPresenter = ({ createBoardHandler, newTitle, newDesc }) => {
  return (
   <Wrapper>
    <RsWrapper>
@@ -43,7 +38,9 @@ const Board_WPresenter = ({
       ju={`space-around`}
      >
       <PText fontSize={`18px`}>게시자 : </PText>
-      <PText fontSize={`18px`}>{userData && userData.nickName}</PText>
+      <PText fontSize={`18px`}>
+       {JSON.parse(sessionStorage.getItem("loginData")).nickName}
+      </PText>
      </Wrapper>
      <DescArea {...newDesc} placeholder="게시글"></DescArea>
     </Wrapper>

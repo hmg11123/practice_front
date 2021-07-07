@@ -6,6 +6,7 @@ export const GET_BOARD = gql`
    title
    desc
    author
+   detailAuthor
    createdAt
    hit
   }

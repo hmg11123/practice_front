@@ -9,6 +9,7 @@ import {
  StyledInput,
  CheckBtn,
  DeleteBtn,
+ SpanText,
 } from "../../../Components/CommonComponents";
 import Theme from "../../../Styles/Theme";
 import Button from "@material-ui/core/Button";
@@ -119,8 +120,12 @@ const MM03Presenter = ({
      </Ul>
     </Wrapper>
     <Wrapper margin={`20px 0 0 0`}>
-     <CheckBtn onClick={() => _isDialogOpenToggle()}>수정하기</CheckBtn>
-     <DeleteBtn onClick={() => deleteUserHandler()}>탈퇴하기</DeleteBtn>
+     <CheckBtn margin={`10px`} onClick={() => _isDialogOpenToggle()}>
+      수정하기
+     </CheckBtn>
+     <DeleteBtn margin={`10px`} onClick={() => deleteUserHandler()}>
+      탈퇴하기
+     </DeleteBtn>
     </Wrapper>
     {/* Dialog Area */}
     {/**====================================================================== */}
@@ -139,16 +144,19 @@ const MM03Presenter = ({
      </DialogTitle>
      <DialogContent>
       <Wrapper>
+       <Wrapper al={`flex-start`}>이름 </Wrapper>
        <StyledInput
         {...inputName}
         placeholder="이름"
         margin={`0 0 50px 0`}
        ></StyledInput>
+       <Wrapper al={`flex-start`}>닉네임</Wrapper>
        <StyledInput
         {...inputNickName}
         placeholder="닉네임"
         margin={`0 0 50px 0`}
        ></StyledInput>
+       <Wrapper al={`flex-start`}>소속회사</Wrapper>
        <StyledInput
         {...inputAffiliatedCompany}
         placeholder="소속회사"
