@@ -22,8 +22,16 @@ const Board_DContainer = ({ match, history }) => {
  const [updateBoardMutation] = useMutation(UPDATE_BOARD);
  const [deleteBoardMutation] = useMutation(DELETE_BOARD);
 
+ console.log(
+  boardBannerDatum && boardBannerDatum.getBoard.detailAuthor === userId._id,
+ );
+ console.log(userId._id);
+
  const _isDialogOpenToggle = () => {
-  if (boardBannerDatum && boardBannerDatum.getBoard.author === userId._id) {
+  if (
+   boardBannerDatum &&
+   boardBannerDatum.getBoard.detailAuthor === userId._id
+  ) {
    setIsDialogOpen(!isDialogOpen);
    inputTitle.setValue(
     `${boardBannerDatum && boardBannerDatum.getBoard.title}`,

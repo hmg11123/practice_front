@@ -7,9 +7,14 @@ import {
  SpanText,
  Wrapper,
  CheckBtn,
+ Pagenation,
+ PagenationBtn,
+ PagenationWrapper,
 } from "../../../Components/CommonComponents";
 import Theme from "../../../Styles/Theme";
 import styled from "styled-components";
+import { withResizeDetector } from "react-resize-detector";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const HoverText = styled(Wrapper)`
  &:hover {
@@ -39,6 +44,15 @@ const MM00Presenter = ({
  moveLinkHandler,
  logout,
  writeMoveLinkHandler,
+ limit,
+ searchValue,
+ setSearchValue,
+ currentPage,
+ setCurrentPage,
+ pages,
+ changePageHandler,
+ totalCnt,
+ prevAndNextPageChangeNoticeHandler,
 }) => {
  return (
   <Wrapper padding={`0`}>
@@ -88,7 +102,9 @@ const MM00Presenter = ({
            borderBottom={`1px solid ${Theme.basicTheme_C}`}
            onClick={() => moveLinkHandler(`board_D/${data._id}`)}
           >
-           <SpanText width={`7%`}>{idx + 1}</SpanText>
+           <SpanText width={`7%`}>
+            {totalCnt - (currentPage * limit + idx) + ""}
+           </SpanText>
            <SpanText width={`13%`} padding={`10px`}>
             {data.title.substring(0, 6)}
            </SpanText>
@@ -112,6 +128,41 @@ const MM00Presenter = ({
        "데이터를 불러오지 못했습니다."
       )}
       <Wrapper dr={`row`} ju={`flex-end`} margin={`10px 0`}>
+       {/* *페이지 네이션 */}
+       <Wrapper ju={`flex-end`} dr={`row`}>
+        {pages && pages.length > 0 && (
+         <PagenationWrapper width={`auto`}>
+          <PagenationBtn
+           onClick={() =>
+            boardBannerDatum &&
+            prevAndNextPageChangeNoticeHandler(currentPage - 1)
+           }
+          >
+           <IoIosArrowBack />
+          </PagenationBtn>
+          {pages.map((data) => {
+           return (
+            <Pagenation
+             className={data === currentPage ? `active` : ``}
+             key={data}
+             onClick={() => changePageHandler(data)}
+            >
+             {data + 1}
+            </Pagenation>
+           );
+          })}
+          <PagenationBtn
+           onClick={() =>
+            boardBannerDatum &&
+            prevAndNextPageChangeNoticeHandler(currentPage + 1)
+           }
+          >
+           <IoIosArrowForward />
+          </PagenationBtn>
+         </PagenationWrapper>
+        )}
+       </Wrapper>
+
        <CheckBtn onClick={() => writeMoveLinkHandler()}>게시글생성</CheckBtn>
       </Wrapper>
      </Wrapper>
@@ -186,4 +237,4 @@ const MM00Presenter = ({
  );
 };
 
-export default MM00Presenter;
+export default withResizeDetector(MM00Presenter);

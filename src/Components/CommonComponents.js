@@ -291,7 +291,7 @@ export const DeleteBtn = styled(CommonButton)`
  &:hover {
   border: 1px solid ${Theme.delete_B_c};
   background: ${Theme.subTheme_C};
-  color: ${Theme.check_B_C};
+  color: ${Theme.delete_B_c};
  }
 `;
 
@@ -299,4 +299,67 @@ export const DescArea = styled.textarea`
  width: ${(props) => props.width || `1000px`};
  height: ${(props) => props.height || `500px`};
  resize: none;
+`;
+
+export const Pagenation = styled.div`
+ width: 25px;
+ height: 25px;
+ display: flex;
+ flex-direction: ${(props) => props.dr || `row`};
+ align-items: ${(props) => props.al || `center`};
+ justify-content: ${(props) => props.ju || `center`};
+ cursor: pointer;
+ padding-top: 3px;
+
+ &.active {
+  background-color: ${(props) => props.theme.subTheme_C};
+  color: ${(props) => props.theme.basicTheme_C};
+  border-radius: 25px;
+  box-shadow: 0px 10px 15px rgba(220, 220, 220, 1);
+ }
+`;
+
+export const PagenationBtn = styled.div`
+ text-align: center;
+ font-size: 18px;
+ width: 25px;
+ height: 25px;
+ color: ${(props) => props.color || `#eee`};
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ cursor: pointer;
+ border-radius: 25px;
+ margin: 0px 3px;
+
+ &:first-child,
+ &:last-child {
+  background-color: ${(props) => props.theme.grey_C};
+  color: ${(props) => props.theme.black_C};
+ }
+
+ &:hover {
+  box-shadow: 0px 10px 15px rgba(220, 220, 220, 1);
+ }
+`;
+
+export const PagenationWrapper = styled.div`
+ width: ${(props) => props.width || `100%`};
+ min-width: ${(props) => props.minWidth};
+ height: ${(props) => props.height};
+ color: ${(props) => props.color};
+ display: flex;
+ flex-direction: ${(props) => props.dr || `row`};
+ align-items: ${(props) => props.al || `center`};
+ justify-content: ${(props) => props.ju || `center`};
+ background: ${(props) => props.bgColor};
+ color: ${(props) => props.color};
+ border: ${(props) => props.border};
+ border-bottom: ${(props) => props.borderBottom};
+ border-radius: ${(props) => props.radius};
+ box-shadow: ${(props) => props.shadow};
+ font-size: ${(props) => props.fontSize};
+ font-weight: ${(props) => props.fontWeight};
+ margin: ${(props) => props.margin || `20px 0px 20px`};
+ padding: ${(props) => props.padding};
 `;

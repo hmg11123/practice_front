@@ -6,6 +6,7 @@ import {
  StyledInput,
  CheckBtn,
 } from "../../../Components/CommonComponents";
+import { withResizeDetector } from "react-resize-detector";
 
 const MM01Presenter = ({ inputEmail, inputPassWord, loginHandler }) => {
  return (
@@ -17,7 +18,7 @@ const MM01Presenter = ({ inputEmail, inputPassWord, loginHandler }) => {
 
     <Wrapper margin={`70px 0`}>
      <StyledInput {...inputEmail} placeholder="이메일" />
-     <StyledInput {...inputPassWord} placeholder="비밀번호" />
+     <StyledInput type="password" {...inputPassWord} placeholder="비밀번호" />
     </Wrapper>
 
     <Wrapper>
@@ -28,4 +29,4 @@ const MM01Presenter = ({ inputEmail, inputPassWord, loginHandler }) => {
  );
 };
 
-export default MM01Presenter;
+export default withResizeDetector(MM01Presenter);

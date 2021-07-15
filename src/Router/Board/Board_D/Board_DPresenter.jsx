@@ -48,7 +48,7 @@ const Board_DPresenter = ({
         <StyledInput
          margin={`0`}
          width={`130px`}
-         value={boardBannerDatum && boardBannerDatum.createdAt}
+         value={boardBannerDatum && boardBannerDatum.createdAt.substring(0, 10)}
          readOnly
         />
        </Wrapper>

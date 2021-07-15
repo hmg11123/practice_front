@@ -10,6 +10,7 @@ import {
  CheckBtn,
 } from "../../../Components/CommonComponents";
 import Theme from "../../../Styles/Theme";
+import { withResizeDetector } from "react-resize-detector";
 
 const MM02Presenter = ({
  createUserHandler,
@@ -48,4 +49,4 @@ const MM02Presenter = ({
  );
 };
 
-export default MM02Presenter;
+export default withResizeDetector(MM02Presenter);

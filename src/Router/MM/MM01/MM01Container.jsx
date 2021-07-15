@@ -19,8 +19,8 @@ const MM01Container = ({ history }) => {
   variables: { email: inputEmail.value, passWord: inputPassWord.value },
  });
 
- const loginHandler = () => {
-  setTryLogin(false);
+ const loginHandler = async () => {
+  await setTryLogin(false);
   if (loginBannerDatum && loginBannerDatum.loginUser.isLogin) {
    const userId = loginBannerDatum && loginBannerDatum.loginUser.userData._id;
    window.sessionStorage.setItem(
