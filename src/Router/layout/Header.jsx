@@ -40,6 +40,14 @@ const Header = ({ history }) => {
      ) : (
       <Wrapper width={`500px`}></Wrapper>
      )}
+     <Wrapper
+      width={`100px`}
+      height={`50px`}
+      borderBottom={`1px solid ${Theme.basicTheme_C}`}
+      onClick={() => moveLinkHandler("notice")}
+     >
+      notice
+     </Wrapper>
     </Wrapper>
    </RsWrapper>
   </WholeWrapper>
